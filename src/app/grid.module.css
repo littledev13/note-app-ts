@@ -1,6 +1,10 @@
 .gridContainer {
   display: grid;
+  width: 100%;
+  justify-items: center;
+  align-items: start;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: repeat(auto-fill, (170px, auto)) gi;
-  gap: 10px; /* Jarak antara item di dalam grid */
+  grid-auto-rows: repeat(auto-fill, 1fr);
+  column-gap: 10px; /* Jarak antara item di dalam grid */
+  row-gap: 15px;
 }

@@ -18,16 +18,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className + " " + ""}>
-        <div className="w-screen px-5 py-3">
+        <div className=" px-5 py-3">
           <nav>
             <p className="text-2xl text-amber-500">
               KuliKode
-              <small className="text-slate-400" style={space.style}>
+              <small className="text-gray-400" style={space.style}>
                 .online
               </small>
             </p>
           </nav>
-          <main className="flex w-full flex-col items-center bg-slate-100 shadow-lg rounded-md p-3">
+          <main className="flex w-full flex-col items-center bg-slate-100 shadow-lg rounded-md p-3 bg-amber-50">
             {children}
           </main>
         </div>

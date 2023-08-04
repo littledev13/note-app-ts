@@ -32,6 +32,8 @@ async function readData(e: string) {
     throw error;
   }
 }
+
+function writeData(title: string, note: string) {}
 async function listenNotes() {
   const starCountRef = ref(getDatabase(), "/");
   onValue(starCountRef, (snapshot) => {
