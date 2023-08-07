@@ -8,15 +8,12 @@ import AddNote from "@/Components/AddNote";
 export default function Home() {
   const { data, error, isLoading } = useSWR("/notes/", readData);
 
-  for (const key in data) {
-    if (data.hasOwnProperty(key)) {
-      const item = data[key];
-      console.log("Key:", key);
-      console.log("Title:", item.title);
-      console.log("Note:", item.note);
-      console.log("------------");
-    }
-  }
+  typeof data !== "undefined"
+    ? Object.values(data).map((item: any, index: any) =>
+        console.log("page: ", index)
+      )
+    : null;
+
   return (
     <div className={grid.gridContainer}>
       {typeof data !== "undefined"

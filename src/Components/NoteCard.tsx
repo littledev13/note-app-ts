@@ -13,7 +13,7 @@ type prop = {
 const NoteCard: React.FC<prop> = ({ title, note }) => {
   return (
     <Card
-      className=" bg-white  rounded-lg min-w-[275px]  min-h-[278px] flex flex-col justify-between"
+      className=" bg-white  rounded-lg min-w-[275px] min-h-[278px] flex flex-col justify-between"
       shadow
     >
       <CardBody>
