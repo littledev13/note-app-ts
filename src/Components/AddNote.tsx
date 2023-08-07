@@ -1,3 +1,4 @@
+import { writeData } from "@/app/config/firebase";
 import {
   Button,
   Input,
@@ -6,40 +7,45 @@ import {
   CardBody,
   CardFooter,
 } from "@material-tailwind/react";
+import { useState } from "react";
 
 const AddNote = () => {
+  const [title, setTitle] = useState("");
+  const [note, setNote] = useState("");
+  const handSave = () => {
+    writeData(title, note);
+    setTitle("");
+    setNote("");
+  };
   return (
     <Card className=" shadow-md rounded-lg w-[300px] min-h-[200px] h-fit flex flex-col">
       <CardBody className="flex flex-col gap-4 ">
-        {/* <input
-        className="w-full font-semibold text-center bg-transparent px-3 py-2"
-        type="text"
-        maxLength={15}
-        id="judul"
-        placeholder="Title"
-      /> */}
-        {/* <textarea
-        className="w-full min-h-[150px] h-fit bg-transparent text-justify px-3 py-2 grow  focus:border-blue-500 text-slate-500"
-        maxLength={130}
-        id="note"
-        placeholder="Note..."
-      /> */}
         <Input
           label="Title"
           maxLength={18}
+          value={title}
+          onChange={(e) => {
+            e.preventDefault();
+            setTitle(e.target.value);
+          }}
           size="md"
           className="font-semibold text-center bg-transparent "
           variant="standard"
         />
         <Textarea
           label="Note . . ."
+          value={note}
           maxLength={130}
+          onChange={(e) => {
+            e.preventDefault();
+            setNote(e.target.value);
+          }}
           variant="standard"
           size="lg"
         />
       </CardBody>
       <CardFooter className="pt-0 my-auto ">
-        <Button>Save</Button>
+        <Button onClick={handSave}>Save</Button>
       </CardFooter>
     </Card>
   );

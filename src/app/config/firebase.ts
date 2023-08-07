@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { child, getDatabase, onValue, ref, get } from "firebase/database";
+import {
+  child,
+  getDatabase,
+  onValue,
+  ref,
+  get,
+  set,
+  push,
+} from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const app = initializeApp({
@@ -14,7 +22,7 @@ const app = initializeApp({
   measurementId: "G-MNGCE69TSL",
 });
 
-const database = getDatabase(app);
+const database = getDatabase();
 
 async function readData(e: string) {
   try {
@@ -33,7 +41,12 @@ async function readData(e: string) {
   }
 }
 
-function writeData(title: string, note: string) {}
+function writeData(title: string, note: string) {
+  set(push(ref(database, "notes/")), {
+    title,
+    note,
+  });
+}
 async function listenNotes() {
   const starCountRef = ref(getDatabase(), "/");
   onValue(starCountRef, (snapshot) => {
@@ -41,4 +54,4 @@ async function listenNotes() {
     return data;
   });
 }
-export { database, readData, listenNotes };
+export { database, listenNotes, writeData, readData };
